@@ -84,37 +84,37 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: #EEE9DA;
+  --background: #eee9da;
   --foreground: #2a3a4a;
   --card: #ffffff;
   --card-foreground: #2a3a4a;
   --popover: #ffffff;
   --popover-foreground: #2a3a4a;
-  --primary: #6096B4;
+  --primary: #6096b4;
   --primary-foreground: #ffffff;
-  --secondary: #BDCDD6;
+  --secondary: #bdcdd6;
   --secondary-foreground: #2a3a4a;
-  --muted: #BDCDD6;
+  --muted: #bdcdd6;
   --muted-foreground: #5a6a7a;
-  --accent: #93BFCF;
+  --accent: #93bfcf;
   --accent-foreground: #2a3a4a;
   --destructive: #dc3545;
   --border: rgba(96, 150, 180, 0.2);
   --input: rgba(96, 150, 180, 0.15);
-  --ring: #93BFCF;
-  --chart-1: #6096B4;
-  --chart-2: #93BFCF;
-  --chart-3: #BDCDD6;
+  --ring: #93bfcf;
+  --chart-1: #6096b4;
+  --chart-2: #93bfcf;
+  --chart-3: #bdcdd6;
   --chart-4: #4a7c94;
   --chart-5: #7ab0c4;
-  --sidebar: #EEE9DA;
+  --sidebar: #eee9da;
   --sidebar-foreground: #2a3a4a;
-  --sidebar-primary: #6096B4;
+  --sidebar-primary: #6096b4;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #BDCDD6;
+  --sidebar-accent: #bdcdd6;
   --sidebar-accent-foreground: #2a3a4a;
   --sidebar-border: rgba(96, 150, 180, 0.2);
-  --sidebar-ring: #93BFCF;
+  --sidebar-ring: #93bfcf;
 }
 
 @layer base {

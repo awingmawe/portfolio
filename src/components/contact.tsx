@@ -31,9 +31,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export function Contact() {
   const { t, language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
-    null
-  );
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -116,7 +114,7 @@ export function Contact() {
         };
 
   return (
-    <section id="contact" className="py-20 bg-secondary/30">
+    <section id="contact" className="min-h-screen py-20 pt-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -128,94 +126,22 @@ export function Contact() {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
               <Mail className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                {t.contact.badge}
-              </span>
+              <span className="text-sm font-medium text-primary">{t.contact.badge}</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t.contact.title}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.contact.subtitle}
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.contact.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{contactInfo.description}</p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold mb-4">
-                  {contactInfo.getInTouch}
-                </h3>
-                <p className="text-muted-foreground">{contactInfo.description}</p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-4 p-4 bg-card border border-border rounded-xl">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">{contactInfo.emailLabel}</p>
-                    <a
-                      href={`mailto:${personalInfo.email}`}
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {personalInfo.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-card border border-border rounded-xl">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">{contactInfo.locationLabel}</p>
-                    <p className="text-muted-foreground">
-                      {personalInfo.location}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-card border border-border rounded-xl">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Clock className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">{contactInfo.responseLabel}</p>
-                    <p className="text-muted-foreground">
-                      {contactInfo.responseValue}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-card border border-border rounded-xl">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <MessageSquare className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">{contactInfo.openLabel}</p>
-                    <p className="text-muted-foreground">
-                      {contactInfo.openValue}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
+          <div className="grid lg:grid-cols-1 gap-12">
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="bg-card border border-border rounded-2xl p-6 space-y-6"
+                className="bg-card border border-border rounded-2xl p-6 space-y-6 max-w-[500px] mx-auto"
               >
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium mb-2"
-                    >
+                    <label htmlFor="name" className="block text-sm font-medium mb-2">
                       {t.contact.form.name}
                     </label>
                     <input
@@ -226,17 +152,12 @@ export function Contact() {
                       placeholder="John Doe"
                     />
                     {errors.name && (
-                      <p className="text-destructive text-sm mt-1">
-                        {errors.name.message}
-                      </p>
+                      <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
                     )}
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium mb-2"
-                    >
+                    <label htmlFor="email" className="block text-sm font-medium mb-2">
                       {t.contact.form.email}
                     </label>
                     <input
@@ -247,18 +168,13 @@ export function Contact() {
                       placeholder="john@example.com"
                     />
                     {errors.email && (
-                      <p className="text-destructive text-sm mt-1">
-                        {errors.email.message}
-                      </p>
+                      <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium mb-2"
-                  >
+                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
                     {t.contact.form.subject}
                   </label>
                   <input
@@ -269,17 +185,12 @@ export function Contact() {
                     placeholder="Project inquiry / Job opportunity"
                   />
                   {errors.subject && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.subject.message}
-                    </p>
+                    <p className="text-destructive text-sm mt-1">{errors.subject.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                  >
+                  <label htmlFor="message" className="block text-sm font-medium mb-2">
                     {t.contact.form.message}
                   </label>
                   <textarea
@@ -290,9 +201,7 @@ export function Contact() {
                     placeholder="Tell me about your project or opportunity..."
                   />
                   {errors.message && (
-                    <p className="text-destructive text-sm mt-1">
-                      {errors.message.message}
-                    </p>
+                    <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
                   )}
                 </div>
 

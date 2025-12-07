@@ -10,6 +10,8 @@ export const translations = {
       skills: "Skills",
       projects: "Projects",
       experience: "Experience",
+      certifications: "Certifications",
+      source: "Source",
       contact: "Contact",
     },
 
@@ -64,13 +66,11 @@ export const translations = {
       items: [
         {
           title: "Web Development",
-          description:
-            "Building responsive, performant web applications with modern frameworks",
+          description: "Building responsive, performant web applications with modern frameworks",
         },
         {
           title: "UI/UX Implementation",
-          description:
-            "Translating designs into pixel-perfect, accessible interfaces",
+          description: "Translating designs into pixel-perfect, accessible interfaces",
         },
         {
           title: "Performance Optimization",
@@ -78,8 +78,7 @@ export const translations = {
         },
         {
           title: "Code Review & Mentoring",
-          description:
-            "Helping teams improve code quality and development practices",
+          description: "Helping teams improve code quality and development practices",
         },
       ],
     },
@@ -182,8 +181,7 @@ export const translations = {
         degree: "Bachelor of Computer Science",
         location: "Bandung, West Java",
         period: "2017 - 2022",
-        thesis:
-          "Development of Water Quality Monitoring in NFT Hydroponic Systems Using WSN",
+        thesis: "Development of Water Quality Monitoring in NFT Hydroponic Systems Using WSN",
       },
     },
 
@@ -212,12 +210,21 @@ export const translations = {
       ],
     },
 
+    // Source Section
+    source: {
+      badge: "Open Source",
+      title: "Built With",
+      subtitle:
+        "This portfolio is built using these amazing open source technologies and libraries",
+      footer: "This portfolio is open source. Feel free to explore the code!",
+      viewRepo: "View Repository",
+    },
+
     // Contact Section
     contact: {
       badge: "Get In Touch",
       title: "Let's Work Together",
-      subtitle:
-        "Have a project in mind? Let's discuss how we can bring your ideas to life.",
+      subtitle: "Have a project in mind? Let's discuss how we can bring your ideas to life.",
       form: {
         name: "Your Name",
         email: "Your Email",
@@ -252,6 +259,8 @@ export const translations = {
       skills: "Keahlian",
       projects: "Proyek",
       experience: "Pengalaman",
+      certifications: "Sertifikasi",
+      source: "Sumber",
       contact: "Kontak",
     },
 
@@ -311,18 +320,15 @@ export const translations = {
         },
         {
           title: "Implementasi UI/UX",
-          description:
-            "Menerjemahkan desain menjadi antarmuka yang sempurna dan mudah diakses",
+          description: "Menerjemahkan desain menjadi antarmuka yang sempurna dan mudah diakses",
         },
         {
           title: "Optimasi Performa",
-          description:
-            "Meningkatkan Core Web Vitals dan kecepatan aplikasi secara keseluruhan",
+          description: "Meningkatkan Core Web Vitals dan kecepatan aplikasi secara keseluruhan",
         },
         {
           title: "Review Kode & Mentoring",
-          description:
-            "Membantu tim meningkatkan kualitas kode dan praktik pengembangan",
+          description: "Membantu tim meningkatkan kualitas kode dan praktik pengembangan",
         },
       ],
     },
@@ -343,28 +349,19 @@ export const translations = {
       title: "Proyek Unggulan",
       subtitle: "Aplikasi nyata yang saya bangun dengan dampak terukur",
       viewGithub: "Lihat Profil GitHub",
-      moreProjects:
-        "Ingin melihat lebih banyak? Kunjungi GitHub saya untuk proyek tambahan.",
+      moreProjects: "Ingin melihat lebih banyak? Kunjungi GitHub saya untuk proyek tambahan.",
       items: [
         {
           title: "Platform Parkee",
           description:
             "Memimpin migrasi dari Pages Router ke App Router, mencapai pemuatan halaman 40% lebih cepat. Membangun webview dengan traffic tinggi yang menangani 2.000+ transaksi harian dengan rendering optimal dan strategi lazy loading.",
-          highlights: [
-            "40% lebih cepat",
-            "2K+ transaksi harian",
-            "99.9% uptime",
-          ],
+          highlights: ["40% lebih cepat", "2K+ transaksi harian", "99.9% uptime"],
         },
         {
           title: "LinkLSM.id",
           description:
             "Merancang platform sosial yang menghubungkan 135+ organisasi dengan publik. Mengimplementasikan form multi-step kompleks dengan validasi real-time, mengurangi pengabaian form sebesar 60%.",
-          highlights: [
-            "135+ organisasi",
-            "60% lebih sedikit pengabaian",
-            "500+ pengguna harian",
-          ],
+          highlights: ["135+ organisasi", "60% lebih sedikit pengabaian", "500+ pengguna harian"],
         },
         {
           title: "STP Aquaculture",
@@ -434,8 +431,7 @@ export const translations = {
         degree: "Sarjana Ilmu Komputer",
         location: "Bandung, Jawa Barat",
         period: "2017 - 2022",
-        thesis:
-          "Pengembangan Pemantauan Kualitas Air pada Sistem Hidroponik NFT Menggunakan WSN",
+        thesis: "Pengembangan Pemantauan Kualitas Air pada Sistem Hidroponik NFT Menggunakan WSN",
       },
     },
 
@@ -462,6 +458,16 @@ export const translations = {
             "Pelatihan khusus dalam pengembangan server-side, desain API, dan manajemen database",
         },
       ],
+    },
+
+    // Source Section
+    source: {
+      badge: "Open Source",
+      title: "Dibangun Dengan",
+      subtitle:
+        "Portfolio ini dibangun menggunakan teknologi dan library open source yang luar biasa ini",
+      footer: "Portfolio ini open source. Silakan jelajahi kodenya!",
+      viewRepo: "Lihat Repository",
     },
 
     // Contact Section

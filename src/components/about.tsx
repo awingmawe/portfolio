@@ -29,40 +29,34 @@ export function About() {
           {
             icon: Code2,
             title: "Clean Code Advocate",
-            description:
-              "Writing maintainable, scalable code following SOLID principles",
+            description: "Writing maintainable, scalable code following SOLID principles",
           },
           {
             icon: Zap,
             title: "Performance Focused",
-            description:
-              "Optimizing Core Web Vitals for lightning-fast experiences",
+            description: "Optimizing Core Web Vitals for lightning-fast experiences",
           },
           {
             icon: Users,
             title: "Team Player",
-            description:
-              "Collaborating effectively and mentoring junior developers",
+            description: "Collaborating effectively and mentoring junior developers",
           },
         ]
       : [
           {
             icon: Code2,
             title: "Advokat Clean Code",
-            description:
-              "Menulis kode yang mudah dipelihara dan skalabel mengikuti prinsip SOLID",
+            description: "Menulis kode yang mudah dipelihara dan skalabel mengikuti prinsip SOLID",
           },
           {
             icon: Zap,
             title: "Fokus Performa",
-            description:
-              "Mengoptimalkan Core Web Vitals untuk pengalaman super cepat",
+            description: "Mengoptimalkan Core Web Vitals untuk pengalaman super cepat",
           },
           {
             icon: Users,
             title: "Pemain Tim",
-            description:
-              "Berkolaborasi secara efektif dan membimbing developer junior",
+            description: "Berkolaborasi secara efektif dan membimbing developer junior",
           },
         ];
 
@@ -82,7 +76,7 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-20 bg-secondary/30">
+    <section id="about" className="min-h-screen py-20 pt-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -94,20 +88,17 @@ export function About() {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
               <User className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                {t.about.badge}
-              </span>
+              <span className="text-sm font-medium text-primary">{t.about.badge}</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t.about.title}{" "}
-              <span className="text-primary">{t.about.titleHighlight}</span>
+              {t.about.title} <span className="text-primary">{t.about.titleHighlight}</span>
             </h2>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Photo & Quick Info */}
             <motion.div variants={itemVariants} className="space-y-6">
-              <div className="aspect-square max-w-md mx-auto bg-gradient-to-br from-primary/20 via-primary/10 to-secondary rounded-2xl flex items-center justify-center overflow-hidden relative">
+              <div className="aspect-square max-w-md mx-auto bg-linear-to-br from-primary/20 via-primary/10 to-secondary rounded-2xl flex items-center justify-center overflow-hidden relative">
                 <div className="absolute inset-0 bg-grid-pattern opacity-5" />
                 <span className="text-9xl">👨‍💻</span>
               </div>
@@ -116,30 +107,22 @@ export function About() {
               <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
                 <div className="p-4 bg-card border border-border rounded-xl">
                   <MapPin className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-sm text-muted-foreground">
-                    {t.contact.info.location}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t.contact.info.location}</p>
                   <p className="font-medium">{personalInfo.location}</p>
                 </div>
                 <div className="p-4 bg-card border border-border rounded-xl">
                   <Briefcase className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-sm text-muted-foreground">
-                    {t.about.yearsExp}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t.about.yearsExp}</p>
                   <p className="font-medium">3+</p>
                 </div>
                 <div className="p-4 bg-card border border-border rounded-xl">
                   <Mail className="w-5 h-5 text-primary mb-2" />
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium text-sm truncate">
-                    {personalInfo.email}
-                  </p>
+                  <p className="font-medium text-sm truncate">{personalInfo.email}</p>
                 </div>
                 <div className="p-4 bg-card border border-border rounded-xl">
                   <GraduationCap className="w-5 h-5 text-primary mb-2" />
-                  <p className="text-sm text-muted-foreground">
-                    {t.experience.education}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t.experience.education}</p>
                   <p className="font-medium text-sm">Computer Science</p>
                 </div>
               </div>
@@ -166,9 +149,7 @@ export function About() {
                     </div>
                     <div>
                       <h4 className="font-medium">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        {item.description}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
                     </div>
                   </div>
                 ))}

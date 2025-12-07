@@ -29,7 +29,7 @@ export function Experience() {
   };
 
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="min-h-screen py-20 pt-24">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -41,16 +41,10 @@ export function Experience() {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
               <Briefcase className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                {t.experience.badge}
-              </span>
+              <span className="text-sm font-medium text-primary">{t.experience.badge}</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t.experience.title}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.experience.subtitle}
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.experience.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.experience.subtitle}</p>
           </motion.div>
 
           <div className="relative">
@@ -59,11 +53,7 @@ export function Experience() {
 
             <div className="space-y-8">
               {t.experience.items.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="relative pl-8 md:pl-20"
-                >
+                <motion.div key={index} variants={itemVariants} className="relative pl-8 md:pl-20">
                   {/* Timeline dot */}
                   <div className="absolute left-0 md:left-8 -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10" />
 
@@ -85,9 +75,7 @@ export function Experience() {
                         <span className="inline-block px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-medium">
                           {exp.type}
                         </span>
-                        <p className="text-sm text-muted-foreground mt-1">
-                          {exp.period}
-                        </p>
+                        <p className="text-sm text-muted-foreground mt-1">{exp.period}</p>
                       </div>
                     </div>
 

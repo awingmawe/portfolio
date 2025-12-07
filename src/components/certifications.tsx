@@ -2,13 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Award, ExternalLink, Server, Star } from "lucide-react";
+import { Award, Server, Star } from "lucide-react";
 import { useLanguage } from "./language-provider";
-
-const iconMap = {
-  certificate: Award,
-  server: Server,
-};
 
 const icons = [Award, Server];
 
@@ -35,7 +30,7 @@ export function Certifications() {
   };
 
   return (
-    <section className="py-20">
+    <section className="min-h-screen py-20 pt-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -47,16 +42,10 @@ export function Certifications() {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
               <Award className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                {t.certifications.badge}
-              </span>
+              <span className="text-sm font-medium text-primary">{t.certifications.badge}</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t.certifications.title}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.certifications.subtitle}
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.certifications.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.certifications.subtitle}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6">

@@ -53,7 +53,7 @@ export function Skills() {
   ] as const;
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="min-h-screen py-20 pt-24">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -65,16 +65,10 @@ export function Skills() {
           <motion.div variants={itemVariants} className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">
-                {t.skills.badge}
-              </span>
+              <span className="text-sm font-medium text-primary">{t.skills.badge}</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t.skills.title}
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t.skills.subtitle}
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.skills.title}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t.skills.subtitle}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -84,7 +78,7 @@ export function Skills() {
                 <motion.div
                   key={category.key}
                   variants={itemVariants}
-                  className={`bg-gradient-to-br ${categoryColors[category.key]} border border-border rounded-2xl p-6 hover:shadow-lg transition-all`}
+                  className={`bg-linear-to-br ${categoryColors[category.key]} border border-border rounded-2xl p-6 hover:shadow-lg transition-all`}
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="p-2 bg-background rounded-lg">
@@ -100,11 +94,7 @@ export function Skills() {
                         <motion.div
                           key={skill.name}
                           initial={{ opacity: 0, scale: 0.8 }}
-                          animate={
-                            inView
-                              ? { opacity: 1, scale: 1 }
-                              : { opacity: 0, scale: 0.8 }
-                          }
+                          animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                           transition={{
                             delay: categoryIndex * 0.1 + skillIndex * 0.05,
                             duration: 0.3,
@@ -115,9 +105,7 @@ export function Skills() {
                           {IconComponent && (
                             <IconComponent className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                           )}
-                          <span className="text-sm font-medium truncate">
-                            {skill.name}
-                          </span>
+                          <span className="text-sm font-medium truncate">{skill.name}</span>
                         </motion.div>
                       );
                     })}
