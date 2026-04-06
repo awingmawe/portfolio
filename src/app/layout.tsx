@@ -1,41 +1,23 @@
 import type { Metadata } from "next";
-import { Syne, Space_Mono } from "next/font/google";
-import { LanguageProvider } from "@/components/language-provider";
+import { Playfair_Display, Manrope } from "next/font/google";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Moch Rafi Adnan Setiadipura | Frontend Developer",
-  description:
-    "Software Engineer with 3+ years of experience specializing in frontend development with React and Next.js. Based in Bandung, Indonesia.",
-  keywords: [
-    "frontend developer",
-    "react developer",
-    "next.js developer",
-    "software engineer",
-    "web developer",
-    "bandung",
-    "indonesia",
-    "moch rafi",
-  ],
-  authors: [{ name: "Moch Rafi Adnan Setiadipura" }],
-  openGraph: {
-    title: "Moch Rafi Adnan Setiadipura | Frontend Developer",
-    description:
-      "Software Engineer with 3+ years of experience specializing in frontend development with React and Next.js.",
-    type: "website",
-  },
+  title: "Rafi Setiadipura | High-End Frontend Engineering",
+  description: "Portfolio of Moch Rafi Adnan Setiadipura, specializing in React, Next.js, and crafting unforgettably elegant web experiences.",
 };
 
 export default function RootLayout({
@@ -45,8 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${syne.variable} ${spaceMono.variable} font-sans antialiased bg-background text-foreground`}>
-        <LanguageProvider>{children}</LanguageProvider>
+      <body className={`${playfair.variable} ${manrope.variable} font-sans antialiased bg-background text-foreground selection:bg-accent selection:text-background`}>
+        {children}
       </body>
     </html>
   );
