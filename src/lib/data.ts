@@ -27,15 +27,19 @@ export const skills = {
     { name: "SWR", icon: "swr" },
   ],
   backend: [
+    { name: "Node.js", icon: "nodejs" },
+    { name: "Python", icon: "python" },
     { name: "SQL", icon: "sql" },
+    { name: "PostgreSQL", icon: "postgresql" },
     { name: "Java", icon: "java" },
     { name: "C++", icon: "cpp" },
-    { name: "Python", icon: "python" },
-    { name: "Node.js", icon: "nodejs" },
   ],
   tools: [
     { name: "GIT", icon: "git" },
     { name: "CI/CD", icon: "cicd" },
+    { name: "Gemini CLI", icon: "gemini" },
+    { name: "Claude Code", icon: "claude" },
+    { name: "OpenClaw", icon: "openclaw" },
     { name: "Agile/Scrum", icon: "agile" },
     { name: "SOLID", icon: "solid" },
   ],
@@ -70,6 +74,19 @@ export const projects = [
   },
   {
     id: 3,
+    title: "YooraSarah E-Commerce",
+    description:
+      "Architected the frontend infrastructure from scratch using Next.js 16, delivering a scalable and highly responsive e-commerce platform with Xendit payment integration.",
+    image: "/projects/yoorasarah.png",
+    tags: ["Next.js 16", "Tailwind CSS", "SWR", "Zustand", "Shadcn"],
+    liveUrl: "https://yoorasarah.com",
+    githubUrl: "https://github.com/awingmawe",
+    highlights: ["Custom e-commerce solution", "Xendit Payment Gateway", "Responsive UI"],
+    icon: "shopping-cart",
+    type: "professional",
+  },
+  {
+    id: 4,
     title: "Wedding Website Organizer",
     description:
       "Engineered an end-to-end custom wedding invitation platform and guest RSVP management system with full CRUD capabilities.",
@@ -82,7 +99,7 @@ export const projects = [
     type: "professional",
   },
   {
-    id: 4,
+    id: 5,
     title: "Portfolio Andreas",
     description:
       "Developed a professional, high-performance portfolio landing page, independently translating broad client requirements into a polished, responsive web interface.",
@@ -95,7 +112,7 @@ export const projects = [
     type: "professional",
   },
   {
-    id: 5,
+    id: 6,
     title: "LinkLSM.id",
     description:
       "Engineered a specialized social media platform to drive public engagement for organizations, successfully onboarding 135 registered organizations.",
@@ -108,7 +125,7 @@ export const projects = [
     type: "professional",
   },
   {
-    id: 6,
+    id: 7,
     title: "STP Aquaculture",
     description:
       "Architected the front-end structure for a corporate profile website using NextJS (App Router), optimizing for speed and modern web standards.",
@@ -127,7 +144,7 @@ export const experiences = [
     id: 1,
     role: "Software Engineer - Frontend Developer",
     company: "PARKEE",
-    type: "Full-Time",
+    type: "Full-Time · Remote",
     period: "Nov 2022 - Present",
     description:
       "Engineered the migration of parkee.app from a traditional page router to a Next.js App Router, significantly enhancing routing performance, SEO, and application flexibility.",
