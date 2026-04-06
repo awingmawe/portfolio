@@ -6,7 +6,7 @@ export const personalInfo = {
   location: "Bandung, Jawa Barat",
   bio: "Frontend Software Engineer with 3+ years of experience building scalable web applications. Expert in React, Next.js, and modern CSS with a track record of improving system performance and user experience. Proven ability to architect complex frontend structures, optimize legacy codebases, and deliver high-quality solutions.",
   tagline: "Seeking to leverage expertise in frontend technologies to drive innovation.",
-  github: "https://github.com/mochrafi",
+  github: "https://github.com/awingmawe",
   linkedin: "https://linkedin.com/in/mochrafi",
   twitter: "https://twitter.com/mochrafi", // Optional, kept from previous
 };
@@ -50,9 +50,10 @@ export const projects = [
     image: "/projects/cv-reviewer.png",
     tags: ["Next.js", "LLM API", "Node.js", "OpenClaw", "Gemini 3.1 Pro"],
     liveUrl: "#",
-    githubUrl: "https://github.com/mochrafi",
+    githubUrl: "https://github.com/awingmawe",
     highlights: ["ATS Optimization", "STAR/XYZ Method", "Telegram Bot Integration"],
     icon: "ai",
+    type: "independent",
   },
   {
     id: 2,
@@ -62,9 +63,10 @@ export const projects = [
     image: "/projects/video-clipper.png",
     tags: ["React", "Node.js", "Gemini CLI", "FFmpeg"],
     liveUrl: "#",
-    githubUrl: "https://github.com/mochrafi",
+    githubUrl: "https://github.com/awingmawe",
     highlights: ["Automated Processing", "AI Key Moment Identification", "Seamless Export"],
     icon: "video",
+    type: "independent",
   },
   {
     id: 3,
@@ -74,9 +76,10 @@ export const projects = [
     image: "/projects/wedding.png",
     tags: ["React", "CRUD", "Web Animations"],
     liveUrl: "https://ginapanji.my.id/rafi",
-    githubUrl: "https://github.com/mochrafi",
+    githubUrl: "https://github.com/awingmawe",
     highlights: ["Over 350 guests managed", "Custom UI/UX", "Invitation distribution system"],
     icon: "wedding",
+    type: "professional",
   },
   {
     id: 4,
@@ -86,9 +89,10 @@ export const projects = [
     image: "/projects/portfolio-andreas.png",
     tags: ["Next.js", "Responsive Design"],
     liveUrl: "https://visiongoal.ch/en",
-    githubUrl: "https://github.com/mochrafi",
+    githubUrl: "https://github.com/awingmawe",
     highlights: ["Delivered in 2 weeks", "Cross-device compatibility"],
     icon: "portfolio",
+    type: "professional",
   },
   {
     id: 5,
@@ -98,9 +102,10 @@ export const projects = [
     image: "/projects/linklsm.png",
     tags: ["React", "React Hook Form"],
     liveUrl: "https://linklsm.id",
-    githubUrl: "https://github.com/mochrafi",
+    githubUrl: "https://github.com/awingmawe",
     highlights: ["135+ organizations", "5-step registration flow", "Data validation"],
     icon: "link",
+    type: "professional",
   },
   {
     id: 6,
@@ -110,9 +115,10 @@ export const projects = [
     image: "/projects/stp-aquaculture.png",
     tags: ["Next.js", "Framer Motion"],
     liveUrl: "https://stpaquaculture.com",
-    githubUrl: "https://github.com/mochrafi",
+    githubUrl: "https://github.com/awingmawe",
     highlights: ["App Router", "Parallax scrolling", "Immersive UX"],
     icon: "fish",
+    type: "professional",
   },
 ];
 
