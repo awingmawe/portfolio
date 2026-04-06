@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Syne, Space_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/language-provider";
 import "./globals.css";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -39,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} font-sans antialiased`}>
+      <body className={`${syne.variable} ${spaceMono.variable} font-sans antialiased bg-background text-foreground`}>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

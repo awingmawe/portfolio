@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, ReactNode } from "react";
+import { useState, useCallback, ReactNode, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Globe } from "lucide-react";
 import { useLanguage } from "./language-provider";
@@ -26,8 +26,6 @@ interface PortfolioContextValue {
   navigateTo: (section: SectionKey) => void;
   goBack: () => void;
 }
-
-import { createContext, useContext } from "react";
 
 const PortfolioContext = createContext<PortfolioContextValue | null>(null);
 
@@ -84,8 +82,8 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
 
   return (
     <PortfolioContext.Provider value={contextValue}>
-      <div className="min-h-screen bg-background overflow-hidden">
-        {/* Top Bar - Back Button & Language Toggle (Outside AnimatePresence for proper fixed positioning) */}
+      <div className="min-h-screen bg-background overflow-hidden font-sans">
+        {/* Top Bar - Back Button & Language Toggle */}
         <AnimatePresence>
           {currentSection !== "hero" && (
             <motion.div
@@ -95,26 +93,22 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <motion.button
+              <button
                 onClick={goBack}
-                className="flex items-center gap-2 px-4 py-2 bg-card/90 backdrop-blur-sm border border-border/60 rounded-lg text-sm font-medium shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
-                whileHover={{ y: -1 }}
-                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 px-4 py-2 bg-card/60 backdrop-blur-md border border-border/50 rounded-md text-xs md:text-sm font-bold uppercase tracking-widest text-muted-foreground hover:bg-card hover:border-primary/50 hover:text-primary transition-all duration-300 shadow-sm"
               >
-                <ArrowLeft className="w-4 h-4 text-primary" />
+                <ArrowLeft className="w-4 h-4" />
                 Back
-              </motion.button>
+              </button>
 
-              <motion.button
+              <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-2 px-4 py-2 bg-card/90 backdrop-blur-sm border border-border/60 rounded-lg text-sm font-medium shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
-                whileHover={{ y: -1 }}
-                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 px-4 py-2 bg-card/60 backdrop-blur-md border border-border/50 rounded-md text-xs md:text-sm font-bold uppercase tracking-widest text-muted-foreground hover:bg-card hover:border-primary/50 hover:text-primary transition-all duration-300 shadow-sm"
                 aria-label="Toggle language"
               >
-                <Globe className="w-4 h-4 text-primary" />
+                <Globe className="w-4 h-4" />
                 {language.toUpperCase()}
-              </motion.button>
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
@@ -123,39 +117,22 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
         <AnimatePresence>
           {isTransitioning && transitionLabel && (
             <motion.div
-              className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none bg-background/80 backdrop-blur-sm"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="fixed inset-0 z-40 flex items-center justify-center bg-background pointer-events-none"
+              initial={{ scaleY: 0, transformOrigin: "bottom" }}
+              animate={{ scaleY: 1, transformOrigin: "bottom" }}
+              exit={{ scaleY: 0, transformOrigin: "top" }}
+              transition={{ duration: 0.6, ease: [0.83, 0, 0.17, 1] }}
             >
               <motion.div
                 className="relative flex flex-col items-center gap-4"
-                initial={{ opacity: 0, scale: 0.8, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
-                {/* Decorative line */}
-                <motion.div
-                  className="w-12 h-1 bg-primary/40 rounded-full"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                />
-                {/* Section name */}
-                <span className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary">
+                <span className="text-4xl md:text-6xl lg:text-8xl font-syne font-black text-primary uppercase tracking-tighter drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]">
                   {transitionLabel}
                 </span>
-                {/* Decorative line */}
-                <motion.div
-                  className="w-12 h-1 bg-primary/40 rounded-full"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                />
               </motion.div>
             </motion.div>
           )}
@@ -165,10 +142,10 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
           {currentSection === "hero" ? (
             <motion.div
               key="hero"
-              initial={{ opacity: 0, filter: "blur(20px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(20px)", scale: 0.95 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: [0.83, 0, 0.17, 1] }}
               className="min-h-screen"
             >
               {hero}
@@ -176,11 +153,11 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
           ) : (
             <motion.div
               key={currentSection}
-              initial={{ opacity: 0, filter: "blur(20px)", scale: 1.05 }}
-              animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-              exit={{ opacity: 0, filter: "blur(20px)", scale: 0.95 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="min-h-screen"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: [0.83, 0, 0.17, 1] }}
+              className="min-h-screen pt-24 px-6 md:px-12 pb-12"
             >
               {sections[currentSection as Exclude<SectionKey, "hero">]}
             </motion.div>

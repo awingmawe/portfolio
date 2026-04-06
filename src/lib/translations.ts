@@ -19,8 +19,8 @@ export const translations = {
     hero: {
       available: "Available for opportunities",
       greeting: "Hi, I'm",
-      bio: "I craft performant, accessible web experiences that users love. Specialized in React ecosystem with a focus on delivering pixel-perfect UIs and optimized Core Web Vitals.",
-      tagline: "Turning complex problems into elegant, scalable solutions.",
+      bio: "Frontend Software Engineer with 3+ years of experience building scalable web applications. Expert in React, Next.js, and modern CSS with a track record of improving system performance and user experience.",
+      tagline: "Seeking to leverage expertise in frontend technologies to drive innovation.",
       cta: "Let's Talk",
       viewWork: "View My Work",
       scroll: "Scroll",
@@ -49,9 +49,9 @@ export const translations = {
       title: "Passionate About Creating",
       titleHighlight: "Digital Experiences",
       description:
-        "I'm a Frontend Engineer based in Bandung, Indonesia with over 3 years of experience building web applications. I specialize in React and Next.js, focusing on creating performant, accessible, and user-friendly interfaces.",
+        "I'm a Frontend Software Engineer based in Bandung, Indonesia. I specialize in building scalable web applications with React, Next.js, and modern CSS, delivering high-quality solutions that improve system performance and user experience.",
       description2:
-        "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee while reading tech articles.",
+        "My expertise includes architecting complex frontend structures, optimizing legacy codebases, and consistently meeting modern web standards to drive innovation.",
       yearsExp: "Years of Experience",
       projectsDone: "Projects Completed",
       downloadCV: "Download CV",
@@ -77,8 +77,8 @@ export const translations = {
           description: "Improving Core Web Vitals and overall application speed",
         },
         {
-          title: "Code Review & Mentoring",
-          description: "Helping teams improve code quality and development practices",
+          title: "Frontend Architecture",
+          description: "Designing complex frontend structures and scalable codebases",
         },
       ],
     },
@@ -102,28 +102,34 @@ export const translations = {
       moreProjects: "Want to see more? Check out my GitHub for additional projects.",
       items: [
         {
-          title: "Parkee Platform",
-          description:
-            "Spearheaded migration from Pages Router to App Router, achieving 40% faster page loads. Built high-traffic webview handling 2,000+ daily transactions with optimized rendering and lazy loading strategies.",
-          highlights: ["40% faster loads", "2K+ daily transactions", "99.9% uptime"],
+          title: "AI-Powered CV Reviewer & Optimizer",
+          description: "Intelligent CV analysis tool utilizing LLMs to automatically parse, evaluate, and optimize resumes against modern ATS standards.",
+          highlights: ["ATS Optimization", "STAR/XYZ Method", "Telegram Bot"],
+        },
+        {
+          title: "AI Video Clipper System",
+          description: "Full-stack automated video processing pipeline leveraging AI to extract short, shareable clips from long-form videos.",
+          highlights: ["Automated Processing", "AI Integration", "Seamless Export"],
+        },
+        {
+          title: "Wedding Website Organizer",
+          description: "End-to-end custom wedding invitation platform and RSVP management system.",
+          highlights: ["350+ guests", "Custom UI/UX", "Invitation distribution"],
         },
         {
           title: "LinkLSM.id",
-          description:
-            "Architected a social platform connecting 135+ organizations with the public. Implemented complex multi-step forms with real-time validation, reducing form abandonment by 60%.",
-          highlights: ["135+ organizations", "60% less abandonment", "500+ daily users"],
+          description: "Social platform connecting 135+ organizations with the public. Reduced form abandonment by 60%.",
+          highlights: ["135+ organizations", "60% less abandonment", "Multi-step forms"],
         },
         {
           title: "STP Aquaculture",
-          description:
-            "Designed and developed an immersive company profile with scroll-driven animations and parallax effects. Achieved 95+ Lighthouse performance score with optimized assets and modern CSS.",
+          description: "Immersive company profile with scroll-driven animations and parallax effects. Achieved 95+ Lighthouse performance score.",
           highlights: ["95+ Lighthouse", "Smooth 60fps", "Mobile-first"],
         },
         {
-          title: "Internal Dashboard",
-          description:
-            "Built a real-time analytics dashboard with interactive data visualizations, PDF export, and role-based access control. Reduced report generation time from minutes to seconds.",
-          highlights: ["Real-time data", "10x faster reports", "RBAC system"],
+          title: "Portfolio Andreas",
+          description: "High-performance portfolio landing page translated from broad client requirements into a polished web interface.",
+          highlights: ["2-week delivery", "Responsive", "Cross-device"],
         },
       ],
     },
@@ -136,43 +142,46 @@ export const translations = {
       education: "Education",
       items: [
         {
-          role: "Frontend Engineer",
+          role: "Software Engineer - Frontend Developer",
           company: "PARKEE",
-          type: "Full-Time · Remote",
+          type: "Full-Time",
           period: "Nov 2022 - Present",
           description:
-            "Leading frontend architecture decisions for Indonesia's growing parking management platform. Championing performance optimization, code quality standards, and developer experience improvements.",
+            "Engineered the migration to Next.js App Router, deployed dedicated webviews processing 2,000+ daily transactions, and improved CMS load times by 30%.",
           achievements: [
-            "Migrated legacy codebase to Next.js App Router, improving LCP by 40%",
-            "Built transaction system handling 2,000+ daily operations with zero downtime",
-            "Established coding standards with ESLint, Prettier, and Husky pre-commit hooks",
-            "Mentored junior developers on React best practices and clean code principles",
+            "Migrated parkee.app to Next.js App Router, enhancing routing, SEO, and flexibility.",
+            "Architected webview for Wuzz registration handling 2,000+ transactions.",
+            "Designed dynamic email templates using SendGrid.",
+            "Refactored codebase with SOLID principles to reduce technical debt.",
+            "Resolved CMS bottlenecks, cutting load times by 30%.",
           ],
         },
         {
-          role: "Frontend Developer",
-          company: "PT. Elaborasi Media Inovasi",
+          role: "Software Engineer - Frontend Developer",
+          company: "PT Muslim Seratus Satu",
           type: "Contract",
-          period: "Jul 2022 - Oct 2022",
+          period: "Aug 2024 - Dec 2025",
           description:
-            "Delivered enterprise-grade dashboard solutions with focus on data visualization and user experience for internal stakeholders.",
+            "Spearheaded the end-to-end frontend architecture of an online Umrah transaction platform.",
           achievements: [
-            "Designed component architecture supporting 50+ reusable UI components",
-            "Implemented real-time data sync reducing manual refresh by 100%",
-            "Built PDF export feature generating reports 10x faster than previous solution",
+            "Engineered V1 and V2 platforms (upgrading to Next.js 15 & Shadcn UI in under 2 months).",
+            "Achieved >95% pixel-perfect UI/UX consistency.",
+            "Optimized SEO for a #1 search ranking.",
+            "Mentored a freelance frontend developer.",
           ],
         },
         {
-          role: "Frontend Developer",
+          role: "Software Engineer Intern - Frontend Developer",
           company: "Gincode Nusantara",
           type: "Internship → Contract",
           period: "Feb 2020 - Dec 2021",
           description:
-            "Started as an intern and grew into a key contributor, leading frontend development for multiple client projects and internal tools.",
+            "Led frontend development for multiple client projects and internal tools, utilizing ReactJS and Ant Design.",
           achievements: [
-            "Led development of Rentatoy platform serving thousands of users",
-            "Built registration system for Idepreneursclub handling 500+ participants",
-            "Introduced Git workflow and code review practices to the team",
+            "Spearheaded frontend for Rentatoy platform.",
+            "Built interactive internal dashboard using ReactJS.",
+            "Developed registration flows serving 500+ participants.",
+            "Created scalable web apps for digital wedding invitations.",
           ],
         },
       ],
@@ -192,20 +201,20 @@ export const translations = {
       subtitle: "Professional certifications and accomplishments",
       items: [
         {
-          name: "Full-Stack Web Development",
+          name: "Back-end Developer (Main Bootcamp)",
           issuer: "SYNERGY Academy",
           year: "2022",
           score: "90.9/100",
           description:
-            "Intensive bootcamp covering modern web development stack including React, Node.js, and PostgreSQL",
+            "Directed the backend architecture for the final project, designing scalable RESTful API infrastructure.",
         },
         {
-          name: "Back-end Developer",
+          name: "Full-Stack Web Class (Pre-Bootcamp)",
           issuer: "SYNERGY Academy",
           year: "2022",
           score: "88.5/100",
           description:
-            "Specialized training in server-side development, API design, and database management",
+            "Led the development utilizing ExpressJS, NodeJS, PostgreSQL, and JavaScript/Bootstrap. Implemented CI/CD via Heroku.",
         },
       ],
     },
@@ -214,8 +223,7 @@ export const translations = {
     source: {
       badge: "Open Source",
       title: "Built With",
-      subtitle:
-        "This portfolio is built using these amazing open source technologies and libraries",
+      subtitle: "This portfolio is built using these amazing open source technologies and libraries",
       footer: "This portfolio is open source. Feel free to explore the code!",
       viewRepo: "View Repository",
     },
@@ -268,8 +276,8 @@ export const translations = {
     hero: {
       available: "Tersedia untuk peluang baru",
       greeting: "Hai, Saya",
-      bio: "Saya membuat pengalaman web yang berkinerja tinggi dan mudah diakses. Spesialisasi dalam ekosistem React dengan fokus pada UI yang sempurna dan Core Web Vitals yang optimal.",
-      tagline: "Mengubah masalah kompleks menjadi solusi yang elegan dan skalabel.",
+      bio: "Frontend Software Engineer dengan pengalaman 3+ tahun membangun aplikasi web skalabel. Ahli dalam React, Next.js, dan CSS modern dengan rekam jejak dalam meningkatkan performa sistem dan UX.",
+      tagline: "Memanfaatkan keahlian dalam teknologi frontend untuk mendorong inovasi.",
       cta: "Hubungi Saya",
       viewWork: "Lihat Karya",
       scroll: "Gulir",
@@ -298,9 +306,9 @@ export const translations = {
       title: "Bersemangat Menciptakan",
       titleHighlight: "Pengalaman Digital",
       description:
-        "Saya seorang Frontend Engineer berbasis di Bandung, Indonesia dengan pengalaman lebih dari 3 tahun membangun aplikasi web. Saya spesialisasi di React dan Next.js, fokus pada pembuatan antarmuka yang berkinerja tinggi, mudah diakses, dan ramah pengguna.",
+        "Saya seorang Frontend Software Engineer yang berbasis di Bandung, Indonesia. Saya spesialisasi dalam membangun aplikasi web dengan React, Next.js, dan CSS modern, memberikan solusi berkualitas yang meningkatkan performa sistem.",
       description2:
-        "Saat tidak coding, Anda akan menemukan saya menjelajahi teknologi baru, berkontribusi ke proyek open-source, atau menikmati secangkir kopi sambil membaca artikel teknologi.",
+        "Keahlian saya meliputi merancang arsitektur struktur frontend yang kompleks, mengoptimalkan codebase legacy, dan secara konsisten memenuhi standar web modern.",
       yearsExp: "Tahun Pengalaman",
       projectsDone: "Proyek Selesai",
       downloadCV: "Unduh CV",
@@ -315,8 +323,7 @@ export const translations = {
       items: [
         {
           title: "Pengembangan Web",
-          description:
-            "Membangun aplikasi web responsif dan berkinerja tinggi dengan framework modern",
+          description: "Membangun aplikasi web responsif dan berkinerja tinggi",
         },
         {
           title: "Implementasi UI/UX",
@@ -324,11 +331,11 @@ export const translations = {
         },
         {
           title: "Optimasi Performa",
-          description: "Meningkatkan Core Web Vitals dan kecepatan aplikasi secara keseluruhan",
+          description: "Meningkatkan Core Web Vitals dan kecepatan aplikasi",
         },
         {
-          title: "Review Kode & Mentoring",
-          description: "Membantu tim meningkatkan kualitas kode dan praktik pengembangan",
+          title: "Arsitektur Frontend",
+          description: "Merancang struktur frontend kompleks dan codebase skalabel",
         },
       ],
     },
@@ -337,7 +344,7 @@ export const translations = {
     skills: {
       badge: "Tech Stack",
       title: "Keahlian & Teknologi",
-      subtitle: "Alat dan teknologi yang saya gunakan untuk mewujudkan ide",
+      subtitle: "Alat dan teknologi yang saya gunakan",
       frontend: "Frontend",
       backend: "Backend & Database",
       tools: "Tools & DevOps",
@@ -349,31 +356,37 @@ export const translations = {
       title: "Proyek Unggulan",
       subtitle: "Aplikasi nyata yang saya bangun dengan dampak terukur",
       viewGithub: "Lihat Profil GitHub",
-      moreProjects: "Ingin melihat lebih banyak? Kunjungi GitHub saya untuk proyek tambahan.",
+      moreProjects: "Kunjungi GitHub saya untuk proyek tambahan.",
       items: [
         {
-          title: "Platform Parkee",
-          description:
-            "Memimpin migrasi dari Pages Router ke App Router, mencapai pemuatan halaman 40% lebih cepat. Membangun webview dengan traffic tinggi yang menangani 2.000+ transaksi harian dengan rendering optimal dan strategi lazy loading.",
-          highlights: ["40% lebih cepat", "2K+ transaksi harian", "99.9% uptime"],
+          title: "AI-Powered CV Reviewer & Optimizer",
+          description: "Alat analisis CV cerdas yang menggunakan LLM untuk mengekstrak dan mengoptimalkan resume terhadap standar ATS.",
+          highlights: ["Optimasi ATS", "Metode STAR/XYZ", "Bot Telegram"],
+        },
+        {
+          title: "AI Video Clipper System",
+          description: "Sistem otomatis pemrosesan video untuk mengekstrak klip dari video durasi panjang menggunakan AI.",
+          highlights: ["Pemrosesan Otomatis", "Integrasi AI", "Ekspor Mulus"],
+        },
+        {
+          title: "Wedding Website Organizer",
+          description: "Platform undangan pernikahan custom end-to-end dan sistem manajemen RSVP tamu.",
+          highlights: ["350+ tamu", "UI/UX Custom", "Distribusi undangan"],
         },
         {
           title: "LinkLSM.id",
-          description:
-            "Merancang platform sosial yang menghubungkan 135+ organisasi dengan publik. Mengimplementasikan form multi-step kompleks dengan validasi real-time, mengurangi pengabaian form sebesar 60%.",
-          highlights: ["135+ organisasi", "60% lebih sedikit pengabaian", "500+ pengguna harian"],
+          description: "Platform sosial untuk organisasi. Mengurangi pengabaian formulir sebesar 60%.",
+          highlights: ["135+ organisasi", "Validasi Real-time", "Multi-step form"],
         },
         {
           title: "STP Aquaculture",
-          description:
-            "Mendesain dan mengembangkan profil perusahaan yang imersif dengan animasi scroll-driven dan efek parallax. Mencapai skor Lighthouse 95+ dengan aset yang dioptimalkan dan CSS modern.",
+          description: "Profil perusahaan dengan animasi scroll dan efek parallax. Mencapai skor performa Lighthouse 95+.",
           highlights: ["95+ Lighthouse", "60fps lancar", "Mobile-first"],
         },
         {
-          title: "Dashboard Internal",
-          description:
-            "Membangun dashboard analitik real-time dengan visualisasi data interaktif, ekspor PDF, dan kontrol akses berbasis peran. Mengurangi waktu pembuatan laporan dari menit menjadi detik.",
-          highlights: ["Data real-time", "Laporan 10x lebih cepat", "Sistem RBAC"],
+          title: "Portfolio Andreas",
+          description: "Halaman landing portofolio profesional dan responsif.",
+          highlights: ["Pengiriman 2 minggu", "Responsif", "Lintas perangkat"],
         },
       ],
     },
@@ -386,43 +399,46 @@ export const translations = {
       education: "Pendidikan",
       items: [
         {
-          role: "Frontend Engineer",
+          role: "Software Engineer - Frontend Developer",
           company: "PARKEE",
-          type: "Full-Time · Remote",
+          type: "Full-Time",
           period: "Nov 2022 - Sekarang",
           description:
-            "Memimpin keputusan arsitektur frontend untuk platform manajemen parkir yang berkembang di Indonesia. Mempelopori optimasi performa, standar kualitas kode, dan peningkatan pengalaman developer.",
+            "Memimpin migrasi ke Next.js App Router, meluncurkan webview yang memproses 2.000+ transaksi harian, dan mempercepat pemuatan CMS.",
           achievements: [
-            "Migrasi codebase legacy ke Next.js App Router, meningkatkan LCP sebesar 40%",
-            "Membangun sistem transaksi yang menangani 2.000+ operasi harian tanpa downtime",
-            "Menetapkan standar coding dengan ESLint, Prettier, dan Husky pre-commit hooks",
-            "Membimbing developer junior tentang praktik terbaik React dan prinsip clean code",
+            "Migrasi parkee.app ke Next.js App Router.",
+            "Membangun webview untuk registrasi Wuzz (2.000+ transaksi).",
+            "Mendesain template email dinamis menggunakan SendGrid.",
+            "Refactoring codebase dengan prinsip SOLID.",
+            "Mempercepat waktu muat CMS sebesar 30%.",
           ],
         },
         {
-          role: "Frontend Developer",
-          company: "PT. Elaborasi Media Inovasi",
+          role: "Software Engineer - Frontend Developer",
+          company: "PT Muslim Seratus Satu",
           type: "Kontrak",
-          period: "Jul 2022 - Okt 2022",
+          period: "Agu 2024 - Des 2025",
           description:
-            "Menyampaikan solusi dashboard kelas enterprise dengan fokus pada visualisasi data dan pengalaman pengguna untuk stakeholder internal.",
+            "Memimpin arsitektur dan pengembangan platform transaksi Umrah online.",
           achievements: [
-            "Merancang arsitektur komponen yang mendukung 50+ komponen UI yang dapat digunakan kembali",
-            "Mengimplementasikan sinkronisasi data real-time yang mengurangi refresh manual sebesar 100%",
-            "Membangun fitur ekspor PDF yang menghasilkan laporan 10x lebih cepat dari solusi sebelumnya",
+            "Membangun V1 dan V2 (upgrade ke Next.js 15 & Shadcn UI di bawah 2 bulan).",
+            "Mencapai >95% konsistensi UI/UX pixel-perfect dengan desain Figma.",
+            "Optimasi Technical SEO hingga menduduki peringkat #1 pencarian.",
+            "Membimbing developer frontend freelance.",
           ],
         },
         {
-          role: "Frontend Developer",
+          role: "Software Engineer Intern - Frontend Developer",
           company: "Gincode Nusantara",
           type: "Magang → Kontrak",
           period: "Feb 2020 - Des 2021",
           description:
-            "Memulai sebagai magang dan berkembang menjadi kontributor kunci, memimpin pengembangan frontend untuk berbagai proyek klien dan tools internal.",
+            "Memimpin pengembangan frontend untuk proyek klien dan aplikasi internal menggunakan ReactJS dan Ant Design.",
           achievements: [
-            "Memimpin pengembangan platform Rentatoy yang melayani ribuan pengguna",
-            "Membangun sistem registrasi untuk Idepreneursclub yang menangani 500+ peserta",
-            "Memperkenalkan workflow Git dan praktik code review ke tim",
+            "Memimpin frontend untuk platform Rentatoy.",
+            "Membangun dashboard internal interaktif.",
+            "Mengembangkan form registrasi untuk 500+ pengguna.",
+            "Membuat aplikasi undangan pernikahan digital skalabel.",
           ],
         },
       ],
@@ -442,20 +458,20 @@ export const translations = {
       subtitle: "Sertifikasi profesional dan pencapaian",
       items: [
         {
-          name: "Pengembangan Web Full-Stack",
+          name: "Back-end Developer (Main Bootcamp)",
           issuer: "SYNERGY Academy",
           year: "2022",
           score: "90.9/100",
           description:
-            "Bootcamp intensif yang mencakup stack pengembangan web modern termasuk React, Node.js, dan PostgreSQL",
+            "Mengarahkan arsitektur backend untuk proyek akhir, merancang infrastruktur API RESTful skalabel.",
         },
         {
-          name: "Back-end Developer",
+          name: "Full-Stack Web Class (Pre-Bootcamp)",
           issuer: "SYNERGY Academy",
           year: "2022",
           score: "88.5/100",
           description:
-            "Pelatihan khusus dalam pengembangan server-side, desain API, dan manajemen database",
+            "Memimpin pengembangan web full-stack dan implementasi pipeline CI/CD via Heroku.",
         },
       ],
     },
@@ -464,8 +480,7 @@ export const translations = {
     source: {
       badge: "Open Source",
       title: "Dibangun Dengan",
-      subtitle:
-        "Portfolio ini dibangun menggunakan teknologi dan library open source yang luar biasa ini",
+      subtitle: "Portfolio ini dibangun menggunakan teknologi open source",
       footer: "Portfolio ini open source. Silakan jelajahi kodenya!",
       viewRepo: "Lihat Repository",
     },
@@ -474,8 +489,7 @@ export const translations = {
     contact: {
       badge: "Hubungi Saya",
       title: "Mari Bekerja Sama",
-      subtitle:
-        "Punya proyek dalam pikiran? Mari diskusikan bagaimana kita bisa mewujudkan ide Anda.",
+      subtitle: "Punya proyek dalam pikiran? Mari diskusikan ide Anda.",
       form: {
         name: "Nama Anda",
         email: "Email Anda",
