@@ -6,17 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import {
-  Send,
-  Mail,
-  MapPin,
-  Loader2,
-  CheckCircle,
-  XCircle,
-  MessageSquare,
-  Clock,
-} from "lucide-react";
-import { personalInfo } from "@/lib/data";
+import { Send, Mail, Loader2, CheckCircle, XCircle } from "lucide-react";
 import { useLanguage } from "./language-provider";
 
 const contactSchema = z.object({
@@ -148,11 +138,15 @@ export function Contact() {
                       {...register("name")}
                       type="text"
                       id="name"
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                      aria-invalid={errors.name ? "true" : "false"}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                       placeholder="John Doe"
                     />
                     {errors.name && (
-                      <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
+                      <p id="name-error" className="text-destructive text-sm mt-1">
+                        {errors.name.message}
+                      </p>
                     )}
                   </div>
 
@@ -164,11 +158,15 @@ export function Contact() {
                       {...register("email")}
                       type="email"
                       id="email"
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                      aria-invalid={errors.email ? "true" : "false"}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                      className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                       placeholder="john@example.com"
                     />
                     {errors.email && (
-                      <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                      <p id="email-error" className="text-destructive text-sm mt-1">
+                        {errors.email.message}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -181,11 +179,15 @@ export function Contact() {
                     {...register("subject")}
                     type="text"
                     id="subject"
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                    aria-invalid={errors.subject ? "true" : "false"}
+                    aria-describedby={errors.subject ? "subject-error" : undefined}
+                    className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                     placeholder="Project inquiry / Job opportunity"
                   />
                   {errors.subject && (
-                    <p className="text-destructive text-sm mt-1">{errors.subject.message}</p>
+                    <p id="subject-error" className="text-destructive text-sm mt-1">
+                      {errors.subject.message}
+                    </p>
                   )}
                 </div>
 
@@ -197,11 +199,15 @@ export function Contact() {
                     {...register("message")}
                     id="message"
                     rows={5}
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
+                    aria-invalid={errors.message ? "true" : "false"}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
                     placeholder="Tell me about your project or opportunity..."
                   />
                   {errors.message && (
-                    <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
+                    <p id="message-error" className="text-destructive text-sm mt-1">
+                      {errors.message.message}
+                    </p>
                   )}
                 </div>
 

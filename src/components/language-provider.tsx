@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useSyncExternalStore, ReactNode } from "react";
 import { translations, Language, Translations } from "@/lib/translations";
 
 type LanguageContextType = {
@@ -11,21 +11,43 @@ type LanguageContextType = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
-  const [mounted, setMounted] = useState(false);
+function getLanguageSnapshot(): Language {
+  try {
+    const saved = localStorage.getItem("language");
+    if (saved === "en" || saved === "id") return saved;
+  } catch {
+    // Fallback if localStorage is inaccessible
+  }
+  return "en";
+}
 
-  useEffect(() => {
-    setMounted(true);
-    const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang && (savedLang === "en" || savedLang === "id")) {
-      setLanguage(savedLang);
-    }
-  }, []);
+function getLanguageServerSnapshot(): Language {
+  return "en";
+}
+
+function subscribeLanguage(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener("languagechange-custom", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("languagechange-custom", callback);
+  };
+}
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const language = useSyncExternalStore(
+    subscribeLanguage,
+    getLanguageSnapshot,
+    getLanguageServerSnapshot
+  );
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem("language", lang);
+    try {
+      localStorage.setItem("language", lang);
+      window.dispatchEvent(new Event("languagechange-custom"));
+    } catch {
+      // Fallback if localStorage is inaccessible
+    }
   };
 
   const value = {
@@ -33,16 +55,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLanguage: handleSetLanguage,
     t: translations[language],
   };
-
-  if (!mounted) {
-    return (
-      <LanguageContext.Provider
-        value={{ language: "en", setLanguage: handleSetLanguage, t: translations.en }}
-      >
-        {children}
-      </LanguageContext.Provider>
-    );
-  }
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

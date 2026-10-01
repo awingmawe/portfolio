@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useCallback, ReactNode } from "react";
+import { useState, useCallback, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Globe } from "lucide-react";
 import { useLanguage } from "./language-provider";
+import { ThemeToggleReversi } from "./theme-toggle-reversi";
+import { FloatingDock } from "./floating-dock";
 
 type SectionKey =
   | "hero"
@@ -52,12 +54,17 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
       if (section === "hero") return "";
       return t.nav[section as keyof typeof t.nav] || section;
     },
-    [t.nav]
+    [t]
   );
 
   const navigateTo = useCallback(
     (section: SectionKey) => {
       if (isTransitioning || section === currentSection) return;
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      if (typeof document !== "undefined") {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }
       setTransitionLabel(getSectionLabel(section));
       setIsTransitioning(true);
       setCurrentSection(section);
@@ -67,13 +74,43 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
 
   const goBack = useCallback(() => {
     if (isTransitioning || currentSection === "hero") return;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (typeof document !== "undefined") {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
     setTransitionLabel("");
     setIsTransitioning(true);
     setCurrentSection("hero");
   }, [isTransitioning, currentSection]);
 
+  // Ensure scroll is at top whenever section changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (typeof document !== "undefined") {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+  }, [currentSection]);
+
+  // Keyboard navigation: Escape key returns to hero (UI/UX Pro Max Priority 1 & 9)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && currentSection !== "hero") {
+        goBack();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentSection, goBack]);
+
   const handleAnimationComplete = useCallback(() => {
     setIsTransitioning(false);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (typeof document !== "undefined") {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
   }, []);
 
   const contextValue: PortfolioContextValue = {
@@ -84,37 +121,45 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
 
   return (
     <PortfolioContext.Provider value={contextValue}>
-      <div className="min-h-screen bg-background overflow-hidden">
-        {/* Top Bar - Back Button & Language Toggle (Outside AnimatePresence for proper fixed positioning) */}
+      <div className="min-h-screen bg-background overflow-hidden relative">
+        {/* Top Bar - Back Button & Controls */}
         <AnimatePresence>
           {currentSection !== "hero" && (
             <motion.div
-              className="fixed top-6 left-6 right-6 z-50 flex items-center justify-between"
+              className="fixed top-5 left-4 right-4 md:left-8 md:right-8 z-50 flex items-center justify-between pointer-events-auto"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.25 }}
             >
               <motion.button
                 onClick={goBack}
-                className="flex items-center gap-2 px-4 py-2 bg-card/90 backdrop-blur-sm border border-border/60 rounded-lg text-sm font-medium shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
+                className="flex items-center gap-2 px-3.5 py-2 bg-card/85 backdrop-blur-md border border-border rounded-xl text-sm font-medium shadow-xs hover:shadow-md hover:border-primary/50 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-primary"
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
+                aria-label="Back to overview (Esc)"
               >
                 <ArrowLeft className="w-4 h-4 text-primary" />
-                Back
+                <span>Back</span>
+                <kbd className="hidden sm:inline-block ml-1 px-1.5 py-0.5 text-[10px] font-mono rounded bg-muted/60 border border-border text-muted-foreground">
+                  ESC
+                </kbd>
               </motion.button>
 
-              <motion.button
-                onClick={toggleLanguage}
-                className="flex items-center gap-2 px-4 py-2 bg-card/90 backdrop-blur-sm border border-border/60 rounded-lg text-sm font-medium shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
-                whileHover={{ y: -1 }}
-                whileTap={{ scale: 0.98 }}
-                aria-label="Toggle language"
-              >
-                <Globe className="w-4 h-4 text-primary" />
-                {language.toUpperCase()}
-              </motion.button>
+              <div className="flex items-center gap-2">
+                <ThemeToggleReversi />
+
+                <motion.button
+                  onClick={toggleLanguage}
+                  className="flex items-center gap-1.5 px-3.5 py-2 bg-card/85 backdrop-blur-md border border-border rounded-xl text-sm font-medium shadow-xs hover:shadow-md hover:border-primary/50 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-primary"
+                  whileHover={{ y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label="Toggle language"
+                >
+                  <Globe className="w-4 h-4 text-primary" />
+                  <span>{language.toUpperCase()}</span>
+                </motion.button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -127,14 +172,14 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <motion.div
                 className="relative flex flex-col items-center gap-4"
-                initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 1.05, y: -20 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                exit={{ opacity: 0, scale: 1.05, y: -15 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Decorative line */}
                 <motion.div
@@ -142,10 +187,10 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
                 />
                 {/* Section name */}
-                <span className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary">
+                <span className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary">
                   {transitionLabel}
                 </span>
                 {/* Decorative line */}
@@ -154,7 +199,7 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
+                  transition={{ duration: 0.3, delay: 0.05 }}
                 />
               </motion.div>
             </motion.div>
@@ -165,10 +210,10 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
           {currentSection === "hero" ? (
             <motion.div
               key="hero"
-              initial={{ opacity: 0, filter: "blur(20px)" }}
-              animate={{ opacity: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, filter: "blur(20px)", scale: 0.95 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="min-h-screen"
             >
               {hero}
@@ -176,14 +221,25 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
           ) : (
             <motion.div
               key={currentSection}
-              initial={{ opacity: 0, filter: "blur(20px)", scale: 1.05 }}
-              animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
-              exit={{ opacity: 0, filter: "blur(20px)", scale: 0.95 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="min-h-screen"
+              initial={{ opacity: 0, y: 15, scale: 0.99 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="min-h-screen pb-20"
             >
               {sections[currentSection as Exclude<SectionKey, "hero">]}
             </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Floating Glass Dock (Option A) */}
+        <AnimatePresence>
+          {currentSection !== "hero" && (
+            <FloatingDock
+              currentSection={currentSection}
+              onNavigate={navigateTo}
+              onGoHome={goBack}
+            />
           )}
         </AnimatePresence>
       </div>

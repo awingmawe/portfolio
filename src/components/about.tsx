@@ -13,6 +13,7 @@ import {
   Users,
   User,
 } from "lucide-react";
+import Image from "next/image";
 import { personalInfo } from "@/lib/data";
 import { useLanguage } from "./language-provider";
 
@@ -98,9 +99,16 @@ export function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Photo & Quick Info */}
             <motion.div variants={itemVariants} className="space-y-6">
-              <div className="aspect-square max-w-md mx-auto bg-linear-to-br from-primary/20 via-primary/10 to-secondary rounded-2xl flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-                <span className="text-9xl">👨‍💻</span>
+              <div className="aspect-square max-w-md mx-auto rounded-2xl overflow-hidden relative border border-border shadow-xl group bg-muted">
+                <Image
+                  src="/pp.jpeg"
+                  alt="Moch Rafi Adnan Setiadipura"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 450px"
+                  priority
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-background/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
 
               {/* Quick Info Cards */}
@@ -113,7 +121,7 @@ export function About() {
                 <div className="p-4 bg-card border border-border rounded-xl">
                   <Briefcase className="w-5 h-5 text-primary mb-2" />
                   <p className="text-sm text-muted-foreground">{t.about.yearsExp}</p>
-                  <p className="font-medium">3+</p>
+                  <p className="font-medium">4</p>
                 </div>
                 <div className="p-4 bg-card border border-border rounded-xl">
                   <Mail className="w-5 h-5 text-primary mb-2" />

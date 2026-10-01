@@ -42,6 +42,13 @@ const openSourceLibraries = [
         url: "https://github.com/dcastil/tailwind-merge",
         github: "https://github.com/dcastil/tailwind-merge",
       },
+      {
+        name: "clsx",
+        version: "2.1.1",
+        description: "Tiny utility for constructing className strings conditionally",
+        url: "https://github.com/lukeed/clsx",
+        github: "https://github.com/lukeed/clsx",
+      },
     ],
   },
   {
@@ -54,12 +61,18 @@ const openSourceLibraries = [
         url: "https://www.framer.com/motion",
         github: "https://github.com/framer/motion",
       },
+    ],
+  },
+  {
+    category: "Audio & Interactions",
+    items: [
       {
-        name: "react-type-animation",
-        version: "3.2.0",
-        description: "A React typewriter animation component",
-        url: "https://react-type-animation.netlify.app",
-        github: "https://github.com/maxeth/react-type-animation",
+        name: "Web Audio API",
+        version: "Native Standard",
+        description:
+          "Synthetic zero-asset mechanical tactile sound effects via oscillators & biquad filters",
+        url: "https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API",
+        github: "https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API",
       },
     ],
   },
@@ -79,6 +92,13 @@ const openSourceLibraries = [
         description: "TypeScript-first schema validation",
         url: "https://zod.dev",
         github: "https://github.com/colinhacks/zod",
+      },
+      {
+        name: "@hookform/resolvers",
+        version: "5.2.2",
+        description: "Validation resolvers for React Hook Form with Zod schema integration",
+        url: "https://github.com/react-hook-form/resolvers",
+        github: "https://github.com/react-hook-form/resolvers",
       },
     ],
   },
@@ -243,7 +263,7 @@ export function Source() {
           <motion.div variants={itemVariants} className="text-center mt-8 md:mt-12">
             <p className="text-muted-foreground text-xs md:text-sm">{t.source.footer}</p>
             <motion.a
-              href="https://github.com/mochrafi/portfolio"
+              href="https://github.com/awingmawe/portfolio"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-4 px-5 md:px-6 py-2.5 md:py-3 bg-card border border-border/60 rounded-lg font-medium shadow-sm hover:shadow-md hover:border-primary/40 transition-all text-sm md:text-base"

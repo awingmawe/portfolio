@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { LanguageProvider } from "@/components/language-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SoundProvider } from "@/components/sound-provider";
+import { EasterEggReversiProvider } from "@/components/easter-egg-reversi";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -10,24 +13,26 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Moch Rafi Adnan Setiadipura | Frontend Developer",
+  title: "Moch Rafi Adnan Setiadipura | Frontend Engineer",
   description:
-    "Software Engineer with 3+ years of experience specializing in frontend development with React and Next.js. Based in Bandung, Indonesia.",
+    "Frontend Engineer with 4 years of experience specializing in React, Next.js, and end-to-end full-stack systems. Based in Bandung, Indonesia.",
   keywords: [
-    "frontend developer",
+    "frontend engineer",
     "react developer",
     "next.js developer",
+    "full stack engineer",
     "software engineer",
     "web developer",
+    "typescript",
     "bandung",
     "indonesia",
     "moch rafi",
   ],
   authors: [{ name: "Moch Rafi Adnan Setiadipura" }],
   openGraph: {
-    title: "Moch Rafi Adnan Setiadipura | Frontend Developer",
+    title: "Moch Rafi Adnan Setiadipura | Frontend Engineer",
     description:
-      "Software Engineer with 3+ years of experience specializing in frontend development with React and Next.js.",
+      "Frontend Engineer with 4 years of experience specializing in React, Next.js, and end-to-end full-stack systems.",
     type: "website",
   },
 };
@@ -38,9 +43,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${montserrat.variable} font-sans antialiased`}>
-        <LanguageProvider>{children}</LanguageProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${montserrat.variable} font-sans antialiased min-h-screen bg-background text-foreground`}
+      >
+        <ThemeProvider>
+          <LanguageProvider>
+            <SoundProvider>
+              <EasterEggReversiProvider>{children}</EasterEggReversiProvider>
+            </SoundProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

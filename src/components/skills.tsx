@@ -89,7 +89,7 @@ export function Skills() {
 
                   <div className="grid grid-cols-2 gap-3">
                     {category.skills.map((skill, skillIndex) => {
-                      const IconComponent = iconMap[skill.icon];
+                      const IconComponent = iconMap[skill.icon] || Code2;
                       return (
                         <motion.div
                           key={skill.name}
