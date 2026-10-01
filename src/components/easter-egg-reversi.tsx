@@ -134,18 +134,15 @@ export function EasterEggReversiProvider({ children }: EasterEggReversiProps) {
               }
         }
         transition={{
-          type: "spring",
-          stiffness: 110,
-          damping: 15,
-          mass: 1.1,
+          duration: 0.85,
+          ease: [0.16, 1, 0.3, 1],
         }}
         style={{
           willChange: isInverted ? "transform" : "auto",
           transform: "translateZ(0)",
+          transformOrigin: "50vw 50vh",
         }}
-        className={`w-full min-h-screen origin-center transition-shadow duration-700 ${
-          isInverted ? "shadow-[0_0_80px_rgba(239,68,68,0.3)] filter contrast-105" : ""
-        }`}
+        className="w-full min-h-screen"
       >
         {children}
       </motion.div>

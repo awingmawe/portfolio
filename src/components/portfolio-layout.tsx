@@ -1,6 +1,14 @@
 "use client";
 
-import { useState, useCallback, useEffect, ReactNode } from "react";
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  createContext,
+  useContext,
+  ReactNode,
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Globe } from "lucide-react";
 import { useLanguage } from "./language-provider";
@@ -29,8 +37,6 @@ interface PortfolioContextValue {
   goBack: () => void;
 }
 
-import { createContext, useContext } from "react";
-
 const PortfolioContext = createContext<PortfolioContextValue | null>(null);
 
 export function usePortfolio() {
@@ -41,8 +47,8 @@ export function usePortfolio() {
 
 export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
   const [currentSection, setCurrentSection] = useState<SectionKey>("hero");
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [transitionLabel, setTransitionLabel] = useState<string>("");
+  const [highlightTitle, setHighlightTitle] = useState<string | null>(null);
+  const titleTimerRef = useRef<NodeJS.Timeout | null>(null);
   const { t, language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
@@ -59,41 +65,46 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
 
   const navigateTo = useCallback(
     (section: SectionKey) => {
-      if (isTransitioning || section === currentSection) return;
+      if (section === currentSection) return;
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-      if (typeof document !== "undefined") {
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
+
+      const label = getSectionLabel(section);
+      if (label) {
+        setHighlightTitle(label);
+        if (titleTimerRef.current) clearTimeout(titleTimerRef.current);
+        titleTimerRef.current = setTimeout(() => {
+          setHighlightTitle(null);
+        }, 420);
+      } else {
+        setHighlightTitle(null);
       }
-      setTransitionLabel(getSectionLabel(section));
-      setIsTransitioning(true);
+
       setCurrentSection(section);
     },
-    [isTransitioning, currentSection, getSectionLabel]
+    [currentSection, getSectionLabel]
   );
 
   const goBack = useCallback(() => {
-    if (isTransitioning || currentSection === "hero") return;
+    if (currentSection === "hero") return;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    if (typeof document !== "undefined") {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
-    setTransitionLabel("");
-    setIsTransitioning(true);
+    if (titleTimerRef.current) clearTimeout(titleTimerRef.current);
+    setHighlightTitle(null);
     setCurrentSection("hero");
-  }, [isTransitioning, currentSection]);
+  }, [currentSection]);
+
+  // Clean up timer on unmount
+  useEffect(() => {
+    return () => {
+      if (titleTimerRef.current) clearTimeout(titleTimerRef.current);
+    };
+  }, []);
 
   // Ensure scroll is at top whenever section changes
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    if (typeof document !== "undefined") {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
   }, [currentSection]);
 
-  // Keyboard navigation: Escape key returns to hero (UI/UX Pro Max Priority 1 & 9)
+  // Keyboard navigation: Escape key returns to hero
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && currentSection !== "hero") {
@@ -103,15 +114,6 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSection, goBack]);
-
-  const handleAnimationComplete = useCallback(() => {
-    setIsTransitioning(false);
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    if (typeof document !== "undefined") {
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
-  }, []);
 
   const contextValue: PortfolioContextValue = {
     currentSection,
@@ -164,75 +166,73 @@ export function PortfolioLayout({ hero, sections }: PortfolioLayoutProps) {
           )}
         </AnimatePresence>
 
-        {/* Transition Overlay with Section Name */}
+        {/* Cinematic Section Highlight Title (GPU Accelerated, Zero-Lag) */}
         <AnimatePresence>
-          {isTransitioning && transitionLabel && (
+          {highlightTitle && (
             <motion.div
-              className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none bg-background/80 backdrop-blur-sm"
+              key={highlightTitle}
+              className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none select-none bg-background/80"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              style={{ willChange: "opacity", transform: "translateZ(0)" }}
             >
               <motion.div
-                className="relative flex flex-col items-center gap-4"
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="relative flex flex-col items-center gap-2.5 sm:gap-3 px-6 py-4"
+                initial={{ opacity: 0, scale: 0.92, y: 14 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 1.05, y: -15 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                exit={{ opacity: 0, scale: 1.04, y: -12 }}
+                transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
               >
-                {/* Decorative line */}
+                {/* Decorative Top Accent Line */}
                 <motion.div
-                  className="w-12 h-1 bg-primary/40 rounded-full"
+                  className="w-8 sm:w-12 h-0.5 sm:h-1 bg-primary/70 rounded-full shadow-[0_0_8px_rgba(56,189,248,0.4)]"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.3, delay: 0.05 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  style={{ willChange: "transform" }}
                 />
-                {/* Section name */}
-                <span className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-primary">
-                  {transitionLabel}
+
+                {/* Section Name (Refined, proportional typography) */}
+                <span className="text-2xl sm:text-3xl md:text-5xl font-black tracking-wider text-primary drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)] uppercase">
+                  {highlightTitle}
                 </span>
-                {/* Decorative line */}
+
+                {/* Decorative Bottom Accent Line */}
                 <motion.div
-                  className="w-12 h-1 bg-primary/40 rounded-full"
+                  className="w-8 sm:w-12 h-0.5 sm:h-1 bg-primary/70 rounded-full shadow-[0_0_8px_rgba(56,189,248,0.4)]"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   exit={{ scaleX: 0 }}
-                  transition={{ duration: 0.3, delay: 0.05 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  style={{ willChange: "transform" }}
                 />
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <AnimatePresence mode="wait" onExitComplete={handleAnimationComplete}>
-          {currentSection === "hero" ? (
-            <motion.div
-              key="hero"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="min-h-screen"
-            >
-              {hero}
-            </motion.div>
-          ) : (
-            <motion.div
-              key={currentSection}
-              initial={{ opacity: 0, y: 15, scale: 0.99 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -15, scale: 0.98 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="min-h-screen pb-20"
-            >
-              {sections[currentSection as Exclude<SectionKey, "hero">]}
-            </motion.div>
-          )}
+        {/* Section Content with Fast & Fluid 60fps GPU Cross-Fade */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSection}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.24, delay: highlightTitle ? 0.12 : 0, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
+            className={currentSection === "hero" ? "min-h-screen" : "min-h-screen pb-20"}
+          >
+            {currentSection === "hero"
+              ? hero
+              : sections[currentSection as Exclude<SectionKey, "hero">]}
+          </motion.div>
         </AnimatePresence>
 
-        {/* Floating Glass Dock (Option A) */}
+        {/* Floating Glass Navigation Dock */}
         <AnimatePresence>
           {currentSection !== "hero" && (
             <FloatingDock
