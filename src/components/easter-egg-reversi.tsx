@@ -118,7 +118,7 @@ export function EasterEggReversiProvider({ children }: EasterEggReversiProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="fixed inset-0 pointer-events-none z-40 bg-[radial-gradient(ellipse_at_center,rgba(185,28,28,0.18)_0%,rgba(15,23,42,0.92)_100%)] mix-blend-color-burn"
+            className="fixed inset-0 pointer-events-none z-40 bg-[radial-gradient(ellipse_at_center,rgba(185,28,28,0.22)_0%,rgba(15,23,42,0.95)_100%)]"
           />
         )}
       </AnimatePresence>
@@ -138,6 +138,10 @@ export function EasterEggReversiProvider({ children }: EasterEggReversiProps) {
           stiffness: 110,
           damping: 15,
           mass: 1.1,
+        }}
+        style={{
+          willChange: isInverted ? "transform" : "auto",
+          transform: "translateZ(0)",
         }}
         className={`w-full min-h-screen origin-center transition-shadow duration-700 ${
           isInverted ? "shadow-[0_0_80px_rgba(239,68,68,0.3)] filter contrast-105" : ""
@@ -168,6 +172,10 @@ export function EasterEggReversiProvider({ children }: EasterEggReversiProps) {
                     }
               }
               transition={{ duration: 2.1, ease: "easeInOut" }}
+              style={{
+                willChange: "transform",
+                transform: "translateZ(0)",
+              }}
               className="relative flex items-center justify-center"
             >
               {/* Haoshoku Haki Hexagon with Crackling Lightning Motion */}

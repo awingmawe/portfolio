@@ -38,7 +38,8 @@ export function ImuEyeAnimation({ className = "" }: ImuEyeAnimationProps) {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -inset-10 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.7)_0%,rgba(185,28,28,0.35)_45%,transparent_75%)] blur-3xl -z-10"
+        style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
+        className="absolute -inset-10 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.7)_0%,rgba(185,28,28,0.35)_45%,transparent_75%)] blur-xl sm:blur-3xl -z-10"
       />
 
       {/* Clean & Frameless Merging Eyes Video (Smooth Vignette Edge, No Borders) */}
@@ -47,6 +48,8 @@ export function ImuEyeAnimation({ className = "" }: ImuEyeAnimationProps) {
         style={{
           maskImage: "radial-gradient(ellipse at center, black 68%, transparent 98%)",
           WebkitMaskImage: "radial-gradient(ellipse at center, black 68%, transparent 98%)",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       >
         <video

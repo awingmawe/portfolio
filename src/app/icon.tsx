@@ -10,21 +10,41 @@ export default function Icon() {
   return new ImageResponse(
     <div
       style={{
-        fontSize: 18,
-        background: "linear-gradient(135deg, #10b981 0%, #047857 100%)",
         width: "100%",
         height: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        color: "white",
-        borderRadius: "8px",
-        fontWeight: 800,
-        fontFamily: "sans-serif",
-        letterSpacing: "-0.5px",
+        background: "linear-gradient(145deg, #0b1120 0%, #152238 100%)",
+        borderRadius: "7px",
+        border: "1.5px solid rgba(56, 189, 248, 0.55)",
+        boxShadow: "inset 0 0 4px rgba(96, 150, 180, 0.25)",
       }}
     >
-      R
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          justifyContent: "center",
+          fontFamily: "system-ui, -apple-system, sans-serif",
+          fontWeight: 900,
+          fontSize: 20,
+          letterSpacing: "-0.5px",
+          color: "#ffffff",
+        }}
+      >
+        <span>R</span>
+        <span
+          style={{
+            width: 3.5,
+            height: 3.5,
+            borderRadius: "50%",
+            backgroundColor: "#38bdf8",
+            marginLeft: 1.5,
+            boxShadow: "0 0 3px #38bdf8",
+          }}
+        />
+      </div>
     </div>,
     {
       ...size,

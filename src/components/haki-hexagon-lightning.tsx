@@ -10,16 +10,6 @@ interface HakiHexagonLightningProps {
 export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningProps) {
   const prefersReducedMotion = useReducedMotion();
 
-  // 6 Vertices of a regular hexagon inscribed in a 200x200 canvas centered at (100, 100), radius 90:
-  // Angle k*60 deg (k=0..5):
-  // 0: (177.9, 145)
-  // 1: (100, 190)
-  // 2: (22.1, 145)
-  // 3: (22.1, 55)
-  // 4: (100, 10)
-  // 5: (177.9, 55)
-  // Or with top flat / vertex at top: (100, 10), (177.9, 55), (177.9, 145), (100, 190), (22.1, 145), (22.1, 55)
-
   return (
     <div
       className={`relative flex items-center justify-center pointer-events-none select-none ${className}`}
@@ -39,7 +29,8 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute w-80 sm:w-[460px] h-80 sm:h-[460px] rounded-full bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.55)_0%,rgba(185,28,28,0.35)_45%,rgba(17,24,39,0.1)_75%,transparent_85%)] blur-2xl"
+        style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
+        className="absolute w-80 sm:w-[460px] h-80 sm:h-[460px] rounded-full bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.55)_0%,rgba(185,28,28,0.35)_45%,rgba(17,24,39,0.1)_75%,transparent_85%)] blur-lg sm:blur-2xl"
       />
 
       {/* 2. Expanding Hexagonal Haki Shockwaves */}
@@ -56,10 +47,12 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
               repeat: Infinity,
               ease: "easeOut",
             }}
-            className="absolute w-60 sm:w-[360px] h-60 sm:h-[360px] border-2 border-red-500/60 shadow-[0_0_30px_rgba(239,68,68,0.7)]"
             style={{
+              willChange: "transform, opacity",
+              transform: "translateZ(0)",
               clipPath: "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)",
             }}
+            className="absolute w-60 sm:w-[360px] h-60 sm:h-[360px] border-2 border-red-500/60 shadow-[0_0_15px_rgba(239,68,68,0.5)] sm:shadow-[0_0_30px_rgba(239,68,68,0.7)]"
           />
           <motion.div
             animate={{
@@ -73,10 +66,12 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
               ease: "easeOut",
               delay: 0.45,
             }}
-            className="absolute w-60 sm:w-[360px] h-60 sm:h-[360px] border border-red-400/50 shadow-[0_0_25px_rgba(239,68,68,0.6)]"
             style={{
+              willChange: "transform, opacity",
+              transform: "translateZ(0)",
               clipPath: "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)",
             }}
+            className="absolute w-60 sm:w-[360px] h-60 sm:h-[360px] border border-red-400/50 shadow-[0_0_15px_rgba(239,68,68,0.4)] sm:shadow-[0_0_25px_rgba(239,68,68,0.6)]"
           />
         </>
       )}
@@ -84,8 +79,9 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
       {/* 3. Main Rotating Concentric Runic Hexagons SVG */}
       <motion.svg
         viewBox="0 0 200 200"
-        className="w-80 sm:w-[480px] h-80 sm:h-[480px] text-red-500 drop-shadow-[0_0_35px_rgba(239,68,68,0.95)]"
+        className="w-80 sm:w-[480px] h-80 sm:h-[480px] text-red-500 drop-shadow-[0_0_15px_rgba(239,68,68,0.75)] sm:drop-shadow-[0_0_35px_rgba(239,68,68,0.95)]"
         fill="none"
+        style={{ willChange: "transform", transform: "translateZ(0)" }}
         animate={
           prefersReducedMotion
             ? {}
@@ -101,7 +97,7 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
       >
         <defs>
           <filter id="hakiGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3.5" result="blur" />
+            <feGaussianBlur stdDeviation="3" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -183,7 +179,8 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
         {/* Lightning Bolt 1: Top Right Vertex to Center */}
         <motion.svg
           viewBox="0 0 200 200"
-          className="absolute w-[330px] sm:w-[500px] h-[330px] sm:h-[500px] drop-shadow-[0_0_12px_#ff0033]"
+          className="absolute w-[330px] sm:w-[500px] h-[330px] sm:h-[500px] drop-shadow-[0_0_6px_#ff0033] sm:drop-shadow-[0_0_12px_#ff0033]"
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
           animate={
             prefersReducedMotion
               ? {}
@@ -199,6 +196,15 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
             ease: "easeInOut",
           }}
         >
+          {/* Hardware Vector Outer Glow */}
+          <path
+            d="M 178,55 L 152,70 L 160,82 L 135,95 L 142,104 L 115,115 L 100,100"
+            stroke="#ef4444"
+            strokeWidth="7"
+            strokeOpacity="0.4"
+            strokeLinecap="round"
+            fill="none"
+          />
           <path
             d="M 178,55 L 152,70 L 160,82 L 135,95 L 142,104 L 115,115 L 100,100"
             stroke="#ff3366"
@@ -215,13 +221,21 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
             fill="none"
           />
           {/* Branch Fork */}
+          <path
+            d="M 152,70 L 138,62 L 130,75"
+            stroke="#ff0044"
+            strokeWidth="5"
+            strokeOpacity="0.35"
+            fill="none"
+          />
           <path d="M 152,70 L 138,62 L 130,75" stroke="#ff0044" strokeWidth="2" fill="none" />
         </motion.svg>
 
         {/* Lightning Bolt 2: Bottom Left Vertex Arc */}
         <motion.svg
           viewBox="0 0 200 200"
-          className="absolute w-[330px] sm:w-[500px] h-[330px] sm:h-[500px] drop-shadow-[0_0_14px_#ff0022]"
+          className="absolute w-[330px] sm:w-[500px] h-[330px] sm:h-[500px] drop-shadow-[0_0_6px_#ff0022] sm:drop-shadow-[0_0_14px_#ff0022]"
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
           animate={
             prefersReducedMotion
               ? {}
@@ -237,6 +251,15 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
             ease: "easeInOut",
           }}
         >
+          {/* Hardware Vector Outer Glow */}
+          <path
+            d="M 22,145 L 48,132 L 40,120 L 68,110 L 60,98 L 88,95 L 100,100"
+            stroke="#ef4444"
+            strokeWidth="8"
+            strokeOpacity="0.4"
+            strokeLinecap="round"
+            fill="none"
+          />
           <path
             d="M 22,145 L 48,132 L 40,120 L 68,110 L 60,98 L 88,95 L 100,100"
             stroke="#ff1a1a"
@@ -253,13 +276,21 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
             fill="none"
           />
           {/* Branch Fork */}
+          <path
+            d="M 68,110 L 78,124 L 92,120"
+            stroke="#ff0033"
+            strokeWidth="5"
+            strokeOpacity="0.35"
+            fill="none"
+          />
           <path d="M 68,110 L 78,124 L 92,120" stroke="#ff0033" strokeWidth="1.8" fill="none" />
         </motion.svg>
 
         {/* Lightning Bolt 3: Top to Bottom Dramatic Strike across Perimeter */}
         <motion.svg
           viewBox="0 0 200 200"
-          className="absolute w-[340px] sm:w-[520px] h-[340px] sm:h-[520px] drop-shadow-[0_0_15px_#dc2626]"
+          className="absolute w-[340px] sm:w-[520px] h-[340px] sm:h-[520px] drop-shadow-[0_0_6px_#dc2626] sm:drop-shadow-[0_0_15px_#dc2626]"
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
           animate={
             prefersReducedMotion
               ? {}
@@ -275,6 +306,15 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
             ease: "linear",
           }}
         >
+          {/* Hardware Vector Outer Glow */}
+          <path
+            d="M 100,10 L 112,35 L 94,48 L 118,72 L 95,90 L 125,120 L 108,140 L 130,165 L 100,190"
+            stroke="#ef4444"
+            strokeWidth="7"
+            strokeOpacity="0.4"
+            strokeLinecap="round"
+            fill="none"
+          />
           <path
             d="M 100,10 L 112,35 L 94,48 L 118,72 L 95,90 L 125,120 L 108,140 L 130,165 L 100,190"
             stroke="#ff0044"
@@ -294,7 +334,8 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
         {/* Lightning Bolt 4: Outward Explosive Haki Sparks (Horizontal Discharge) */}
         <motion.svg
           viewBox="0 0 200 200"
-          className="absolute w-[350px] sm:w-[540px] h-[350px] sm:h-[540px] drop-shadow-[0_0_18px_#ff0033]"
+          className="absolute w-[350px] sm:w-[540px] h-[350px] sm:h-[540px] drop-shadow-[0_0_8px_#ff0033] sm:drop-shadow-[0_0_18px_#ff0033]"
+          style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
           animate={
             prefersReducedMotion
               ? {}
@@ -310,6 +351,15 @@ export function HakiHexagonLightning({ className = "" }: HakiHexagonLightningPro
             ease: "easeInOut",
           }}
         >
+          {/* Hardware Vector Outer Glow */}
+          <path
+            d="M 22,55 L 45,65 L 35,78 L 70,85 L 60,98 L 100,100 L 140,95 L 155,80 L 145,70 L 178,55"
+            stroke="#ef4444"
+            strokeWidth="7"
+            strokeOpacity="0.4"
+            strokeLinecap="round"
+            fill="none"
+          />
           <path
             d="M 22,55 L 45,65 L 35,78 L 70,85 L 60,98 L 100,100 L 140,95 L 155,80 L 145,70 L 178,55"
             stroke="#ff2a2a"
